@@ -72,3 +72,15 @@ p {
     padding: 4rem 2rem;
     text-align: center;
 }
+
+/* estilo fotos para carrusel*/
+.d-block{
+    height: 400px;
+    width: 800px;
+    margin: 0px;
+}
+
+.carousel{
+    text-align: center;
+    margin: 0px;
+}
