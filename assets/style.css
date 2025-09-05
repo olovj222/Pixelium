@@ -12,8 +12,10 @@ body {
 .header {
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el header */
     padding: 1rem 2rem;
-    position: sticky;
+    position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -23,12 +25,34 @@ body {
     align-items: center;
 }
 
+.navbar-brand-group {
+    display: flex; /* Permite alinear el texto y la imagen en la misma línea */
+    align-items: center; /* Alinea verticalmente al centro */
+    gap: 5px; /* Agrega un pequeño espacio entre los elementos. Ajusta según necesites. */
+}
+
 .logo {
     font-family: 'Orbitron', sans-serif; /* Fuente de encabezado Orbitron para el logo */
     font-size: 1.5rem;
     color: #1E90FF; /* Azul Eléctrico para el logo */
     text-decoration: none;
     letter-spacing: 2px;
+}
+
+.navbar-brand-group .logo {
+    font-family: 'Orbitron', sans-serif; /* Asegura que mantenga la fuente que definiste */
+    font-size: 1.5rem; /* Ajusta si es necesario */
+    color: #1E90FF; /* Color de acento para el texto del logo */
+    text-decoration: none;
+    line-height: 1; /* Para que la altura de línea no cause espacios extra */
+}
+
+.logo-image {
+    height: 105px; /* Ajusta el alto deseado para el logo */
+    width: auto; /* Mantiene la proporción */
+    margin-right: 5px; /* Opcional: para separarlo un poco si va antes del texto */
+    /* Si la imagen va después del texto y quieres que se apegue, puedes usar margin-left: 5px; */
+    vertical-align: middle; /* Alinea la imagen con el texto */
 }
 
 .nav-links {
@@ -69,7 +93,8 @@ p {
 
 /* Estilos del contenido principal */
 .main-content {
-    padding: 4rem 2rem;
+    margin-top: 0;
+    padding-top: 0;
     text-align: center;
 }
 
@@ -83,4 +108,17 @@ p {
 .carousel{
     text-align: center;
     margin: 0px;
+}
+
+.hero-background {
+    background-image: url('../assets/img/hero-background.png') !important; /* Cambia esta ruta por la de tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opcional: para un efecto de scroll parallax */
+    min-height: 700px;
+    padding-top: 150px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
 }
