@@ -116,7 +116,7 @@ p {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Opcional: para un efecto de scroll parallax */
-    min-height: 600px;
+    min-height: 500px;
     padding-top: 150px;
     padding-left: 0 !important;
     padding-right: 0 !important;
