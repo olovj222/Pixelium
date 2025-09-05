@@ -116,9 +116,23 @@ p {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Opcional: para un efecto de scroll parallax */
-    min-height: 700px;
+    min-height: 600px;
     padding-top: 150px;
     padding-left: 0 !important;
     padding-right: 0 !important;
     
+}
+
+.row {
+    display: flex; /* Convierte la fila en un contenedor flexible */
+    flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+    display: flex; /* Hace que las columnas también sean contenedores flexibles */
+    flex-direction: column; /* Organiza el contenido de la columna de forma vertical */
+}
+
+.row > [class*='col-'] .card {
+    flex-grow: 1; /* ¡Esta es la clave! Hace que las tarjetas se estiren para llenar el espacio disponible */
 }
