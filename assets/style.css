@@ -70,11 +70,15 @@ body {
     color: #FFFFFF; /* Texto del menú blanco */
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #39FF14; /* Verde Neón al pasar el mouse */
+    color: #39FF14; /* verde neón */
+    text-shadow: 0 0 5px #39FF14,
+                 0 0 10px #39FF14,
+                 0 0 20px #39FF14,
+                 0 0 40px #39FF14;
 }
 
 /* Estilos de los títulos */
@@ -135,4 +139,20 @@ p {
 
 .row > [class*='col-'] .card {
     flex-grow: 1; /* ¡Esta es la clave! Hace que las tarjetas se estiren para llenar el espacio disponible */
+}
+
+.card.bg-dark {
+    border: 2px solid #1E90FF; /* color del neón (cyan en este caso) */
+    box-shadow: 0 0 10px #1E90FF, 
+                0 0 20px #1E90FF, 
+                0 0 40px #1E90FF;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* efecto al pasar el mouse */
+.card.bg-dark:hover {
+    border-color: #39FF14; /* cambia a fucsia en hover */
+    box-shadow: 0 0 15px #39FF14, 
+                0 0 30px #39FF14, 
+                0 0 60px #39FF14;
 }
