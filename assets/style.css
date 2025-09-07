@@ -194,3 +194,20 @@ p {
     }
 }
 
+.categorias{
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 10;
+    display: flex;
+}
+
+.categorias a:hover{
+        color: #39FF14; /* verde neón */
+    text-shadow: 0 0 5px #39FF14,
+                 0 0 10px #39FF14,
+                 0 0 20px #39FF14,
+                 0 0 40px #39FF14;
+
+}
+
