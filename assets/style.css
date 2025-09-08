@@ -115,6 +115,12 @@ p {
     text-align: center;
 }
 
+/* Estilos del texto secundario para párrafos largos */
+.pl {
+    color: #D3D3D3; /* Gris Claro para párrafos y descripciones */
+    text-align: justify;
+}
+
 /* Estilos del contenido principal */
 .main-content {
     margin-top: 0;
