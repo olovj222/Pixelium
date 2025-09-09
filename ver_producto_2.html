@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Detalle producto 2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header class="header">
+<header class="header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
 
@@ -63,9 +62,7 @@
     </div>
   </nav>
 </header>
-
-
-    <main class="main-content pt-0">
+<main class="main-content pt-0">
         <section class="hero-section text-center py-5">
     <div class="container-fluid hero-background">
         <div class="row align-items-center">
@@ -74,7 +71,7 @@
         <h1 class="display-1">Level-UP Gamer</h1>
             <p class="lead">Tienda de productos gamers creada por gamers!</p>
         <div class="text-center">
-            <a href="productos.html" class="btn btn-primary mt-3">Descubre más</a>
+            <a href="#" class="btn btn-primary mt-3">Descubre más</a>
         </div>
         <div class="text-center">
             <img src="assets/img/todos_voltereta.gif" alt="Gamer haciendo volteretas" class="img-fluid mt-4" style="max-width: 600px;">
@@ -84,65 +81,101 @@
     </div>
         </section>
 
-        <section class="featured-products py-0">
-            <div class="container py-5 pt-0">
-                <h2 class="text-center mb-4 mt-0">Productos Destacados</h2>
-                <div class="row text-center py-5 pb-0">
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-dark text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Xbox Series X</h5>
-                                <img src="assets/img/mando xbox.webp" alt="Mando Xbox Series X" class="img-fluid mb-3">
-                                <p class="card-text">Mando Xbox Series X</p>
-                                <a href="ver_producto.html" class="btn btn-primary">Ver Producto</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-dark text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Sillas</h5>
-                                <img src="assets/img/silla gamer.webp" alt="Silla Gamer" class="img-fluid mb-3">
-                                <p class="card-text">Silla ergonomica Secretlab Titan</p>
-                                <a href="ver_producto_2.html" class="btn btn-primary">Ver Producto</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-dark text-white">
-                            <div class="card-body">
-                                <h5 class="card-title">Mouses</h5>
-                                <img src="assets/img/mouse_gamer.webp" alt="Mouse Logitech G502 HERO" class="img-fluid mb-3">
-                                <p class="card-text">Mouse Logitech G502 HERO</p>
-                                <a href="ver_producto_3.html" class="btn btn-primary">Ver Producto</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="news-section py-0 bg-transparent text-white mb-0">
+
+</main>      
+<!-- Producto con fotos carrusel -->
+
+<section class="featured-products py-0">
+
+    <div class="container py-5 pt-0">
+                 <div class="row text-center">
+                    <div class="col-md-12 mb-4">
+                        <div class="card bg-dark text-white">
+                             <h5 class="card-title">Silla Gamer Secretlab Titan</h5>
+
+    <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="img-fluid" src="assets/img/silla_detalle_1.png" style="max-width: 547px;" alt="...">
+    </div>
+
+        <div class="carousel-item">
+      <img class="img-fluid" src="assets/img/silla_detalle_2.png"class="d-block" style="max-width: 547px;" alt="...">
+    </div>
+
+    <div class="carousel-item">
+      <img class="img-fluid" src="assets/img/silla_detalle_3.png"style="max-width: 547px;" alt="...">
+    </div>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+                            <div class="card-body">
+                                <p class="card-text">Diseñada para el máximo confort, esta silla ofrece un soporte
+                                                    ergonómico y personalización ajustable para sesiones de juego prolongadas.</p>
+                                <div class="detalles-producto">
+                                <div class="precio-producto">Precio Completo</div>
+                                <button type="button" class="btn btn-outline-secondary">$349.990</button>
+                                <div class="precio-producto">Precio especial registrados</div>
+                                <button type="button" class="btn btn-outline-primary">$279.992</button>
+                                <hr>
+                                </div>
+                                <a href="productos.html" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+    </div>
+</section>
+
+
+
+                <section class="news-section py-0 bg-transparent text-white mb-0">
             <div class="container-fluid hero-background pt-2">
-                <h2 class="text-center mb-4">Últimas Noticias</h2>
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 mb-4">
+                <h2 class="text-center mb-4">Te podría interesar</h2>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-4">
                         <div class="card bg-dark text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Nuevo RPG sorprende con mecánicas innovadoras.</h5>
-                                <img src="assets/img/ER3.webp" alt="Eternal Realms: Awakening" class="img-fluid mb-3">
-                                <p class="card-text">Eternal Realms: Awakening combina mundo abierto y decisiones que alteran la historia. En pocos días ya superó los 2 millones de descargas.</p>
-                                <a href="noticias.html" class="btn btn-primary">Leer más</a>
+                                <h5 class="card-title">Silla Gamer Secretlab Titan</h5>
+                                <div class="foto-producto">
+                                    <img class="img-fluid rounded" style="max-width: 175px;" src="assets/img/silla gamer.webp" alt="silla gamer">
+                                </div>
+                                <p class="card-text">Descripción breve del producto innovador.</p>
+                                <a href="productos.html" class="btn btn-primary">Ver Producto</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-4">
+                    <div class="col-md-4 mb-4">
                         <div class="card bg-dark text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Récord en campeonato mundial de eSports</h5>
-                                <img src="assets/img/eSport.webp" alt="World eSports Championship 2025" class="img-fluid mb-3">
-                                <p class="card-text">El World eSports Championship 2025 rompió récords con más de 8,5 millones de espectadores. El torneo repartió 15 millones en premios.</p>
-                                <a href="noticias.html" class="btn btn-primary">Leer más</a>
+                                <h5 class="card-title">Play Station 5 slim</h5>
+                                 <div class="foto-producto">
+                                    <img class="img-fluid rounded" style="max-width: 175px;" src="assets/img/play_5.webp" alt="play_5">
+                                </div>
+                                <p class="card-text">Descripción breve de otro producto esencial.</p>
+                                <a href="productos.html" class="btn btn-primary">Ver Producto</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Auriculares HyperX Cloud II</h5>
+                                 <div class="foto-producto">
+                                    <img class="img-fluid rounded" style="max-width: 175px;" src="assets/img/HYPERXX.png" alt="Auriculares">
+                                </div>
+                                <p class="card-text">Descripción breve del último lanzamiento.</p>
+                                <a href="productos.html" class="btn btn-primary">Ver Producto</a>
                             </div>
                         </div>
                     </div>
@@ -150,7 +183,7 @@
             </div>
         </section>
 
-        <section class="contact-section py-4">
+                <section class="contact-section py-4">
             <div class="container text-center">
                 <h2>¿Tienes alguna pregunta?</h2>
                 <p>Contáctanos para más información o para una consulta.</p>
@@ -159,14 +192,8 @@
                 <img src="assets/img/mario.gif" alt="Mario saludando" class="img-fluid mt-4" style="max-width: 150px;">
             </div>
         </section>
-
-    </main>
-
-    <footer class="text-center py-3">
-        <p>&copy; 2025 Level-UP Gamer. Todos los derechos reservados</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/app.js"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
