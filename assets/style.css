@@ -237,9 +237,6 @@ p {
 }
 
 
-
-
-
 /* Animación de parpadeo eléctrico en cards */
 @keyframes card-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
