@@ -1,224 +1,65 @@
-// DECLARACION DE VARIABLES
-const regAlert = document.getElementById('regAlert');
-const nombre = document.getElementById('nombre');
-const correo = document.getElementById('correo');
-const correo2 = document.getElementById('correo2');
-const correo3 = document.getElementById('correo3');
-const telefono = document.getElementById('telefono');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
-const comuna = document.getElementById('comuna');
-const form = document.getElementById('formRegistro');
+// login.js
 
+// Elementos del DOM
+const formLogin = document.getElementById('formLogin');
+const loginCorreo = document.getElementById('loginCorreo');
+const loginPass = document.getElementById('loginPass');
+const loginAlert = document.getElementById('loginAlert');
 
-//FUNCIONES
-// function soloLetrasEspacios(str) {
-//     return /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(str);
-// }
-// FUNCION FLECHA
-const soloLetrasEspacios = (str) => /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(str);
-const isDuocMail = (str) => /^[A-Za-z0-9-_.]+@duoc.cl$/.test(str);
-const isEstudianteMail = (str) => /^[A-Za-z0-9-_.]+@estudiantes.duoc.cl$/.test(str);
-const validPhone = (str) => str === '' || /^[0-9+()-]{8,15}$/.test(str);
-const strongPassword = (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
+// Lista de usuarios
+const usuarios = [
+    { correo: "fullstack@duoc.cl", password: "Fullstack@123" }
+];
 
-//VALIDACIONES
-//VALIDAMOS EL NOMBRE
-nombre.addEventListener('input',()=>{
-    if (soloLetrasEspacios(nombre.value.trim()) && nombre.value.length>=2 && nombre.value.length<=30){
-        nombre.classList.remove('is-invalid');
-        nombre.classList.add('is-valid');
-    }
-    else{
-        nombre.classList.add('is-invalid')
-        nombre.classList.remove('is-valid');
-    }
+// Función para mostrar alert con mensaje e ícono
+function mostrarAlert(mensaje, tipo) {
+    loginAlert.classList.remove("d-none", "alert-danger", "alert-success");
+    loginAlert.classList.add("alert", tipo === "error" ? "alert-danger" : "alert-success");
+
+    loginAlert.innerHTML = tipo === "error"
+        ? `${mensaje}<p></p><img src="assets/img/error.gif" alt="Error" style="width:80px;height:80px;">`
+        : `${mensaje}<p></p><img src="assets/img/check.gif" alt="Éxito" style="width:80px;height:80px;">`;
+
+    setTimeout(() => loginAlert.classList.add("d-none"), 3000);
 }
-);
 
-//VALIDAMOS CORREO
-correo.addEventListener('input',()=>{
-    if (isDuocMail(correo.value.trim()) || isEstudianteMail(correo.value.trim())){
-        correo.classList.remove('is-invalid');
-        correo.classList.add('is-valid');
-    }
-    else{
-        correo.classList.add('is-invalid')
-        correo.classList.remove('is-valid');
-    }
-}
-);
-// Segunda validacion de correo, que el tipo de correo sea el mismo en ambos campos
-correo2.addEventListener('input',()=>{
-    if (correo.value == correo2.value){
-        correo2.classList.remove('is-invalid');
-        correo2.classList.add('is-valid');
-    }
-    else{
-        correo2.classList.add('is-invalid')
-        correo2.classList.remove('is-valid');
-    }
-}
-)
-
-correo3.addEventListener('input',()=>{
-    if (isDuocMail(correo3.value.trim()) || isEstudianteMail(correo3.value.trim())){
-        correo3.classList.remove('is-invalid');
-        correo3.classList.add('is-valid');
-    }
-    else{
-        correo3.classList.add('is-invalid')
-        correo3.classList.remove('is-valid');
-    }
-}
-)
-//VALIDAMOS TELEFONO
-telefono.addEventListener('input',()=>{
-    if (validPhone(telefono.value.trim())){
-        telefono.classList.remove('is-invalid');
-        telefono.classList.add('is-valid');
-    }
-    else{
-        telefono.classList.add('is-invalid')
-        telefono.classList.remove('is-valid');
-    }
-}
-);
-
-
-
-//POBLAR CAMPO SELECT
-//creamos diccionario con comunas
-const comunas = {
-    "PA" : "Puente Alto",
-    "LF" : "La Florida",
-    "LP" : "La Pintana",
-    "ST" : "Santiago"
-}
-//creamos funcion para llenar select de comunas
-function llenarComunas(){
-    for (let codigo in comunas){
-        const opcion = document.createElement("option");
-        opcion.value = codigo.valueOf();
-        opcion.textContent = comunas[codigo];
-        comuna.appendChild(opcion);
-
-    }
-    
-};
-//llamamos a la funcion
-llenarComunas(); //dejamos el select sin valor por defecto
-//VALIDAMOS EL CAMPO SELECT, esta vez usando toggle
-//toggle verifica el valor de verdad de una condicion, si se cumple, añade la clase señalada
-//si no la cumple, la elimina.
-comuna.addEventListener('change',() =>{
-    comuna.classList.toggle('is-valid',comuna.value != '');
-    comuna.classList.toggle('is-invalid',comuna.value == '');
-});
-
-//VALIDACION DE CONTRASEÑA
-password?.addEventListener('input',()=>{
-    if (password.value.length >= 8 && strongPassword(password.value)){
-        password.classList.remove('is-invalid');
-        password.classList.add('is-valid');
-    }
-    else{
-        password.classList.add('is-invalid')
-        password.classList.remove('is-valid');
-    }
-}
-);
-//VALIDACION DE CONTRASEÑA2
-password2?.addEventListener('input',()=>{
-    if (password.value == password2.value){
-        password2.classList.remove('is-invalid');
-        password2.classList.add('is-valid');
-    }
-    else{
-        password2.classList.add('is-invalid')
-        password2.classList.remove('is-valid');
-    }
-}
-);
-
-//==========================================================//
-
-
-//función en el boton SUBMIT
-form?.addEventListener('submit', (e) => {
+// Listener del submit
+formLogin?.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let hayError = false;
+    const correo = loginCorreo.value.trim();
+    const pass = loginPass.value;
 
-    // Lista de campos obligatorios
-    const campos = [nombre, correo, correo2, correo3, telefono, password, password2, comuna];
-
-    campos.forEach(campo => {
-        if (!campo) return; // Protección por null
-
-        // Campo vacío
-        if (campo.value.trim() === '') {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        } 
-        // Validaciones específicas
-        else if (campo === nombre && (!soloLetrasEspacios(nombre.value.trim()) || nombre.value.length < 2 || nombre.value.length > 30)) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        else if ((campo === correo || campo === correo3) && !(isDuocMail(campo.value.trim()) || isEstudianteMail(campo.value.trim()))) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        else if (campo === correo2 && correo2.value !== correo.value) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        else if (campo === telefono && !validPhone(telefono.value.trim())) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        else if (campo === password && (password.value.length < 8 || !strongPassword(password.value))) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        else if (campo === password2 && password2.value !== password.value) {
-            campo.classList.add('is-invalid');
-            campo.classList.remove('is-valid');
-            hayError = true;
-        }
-        // Campo válido
-        else {
-            campo.classList.remove('is-invalid');
-            campo.classList.add('is-valid');
-        }
-    });
-
-    if (hayError) {
-        regAlert.classList.remove("d-none", "alert-success");
-        regAlert.classList.add("alert", "alert-danger");
-        regAlert.innerHTML = `
-            Revise todos los campos
-            <p></p>
-            <img src="assets/img/error.gif" alt="Error" class="me-2" style="width:80px;height:80px;">
-        `;
-        setTimeout(() => regAlert.classList.add("d-none"), 3000);
+    // Validación básica de campos vacíos
+    if (!correo || !pass) {
+        mostrarAlert("Por favor completa todos los campos", "error");
+        if (!correo) loginCorreo.classList.add("is-invalid");
+        if (!pass) loginPass.classList.add("is-invalid");
         return;
     }
 
-    // Todo correcto → Éxito
-    regAlert.classList.remove("d-none", "alert-danger");
-    regAlert.classList.add("alert", "alert-success");
-    regAlert.innerHTML = `
-        Cuenta creada con éxito
-        <p></p>
-        <img src="assets/img/check.gif" alt="Éxito" class="me-2" style="width:90px;height:90px;">
-    `;
-    setTimeout(() => regAlert.classList.add("d-none"), 3000);
+    // Buscamos usuario en la lista
+    const usuario = usuarios.find(u => u.correo === correo && u.password === pass);
+
+    if (usuario) {
+        // Login correcto
+        loginCorreo.classList.remove("is-invalid");
+        loginPass.classList.remove("is-invalid");
+        loginCorreo.classList.add("is-valid");
+        loginPass.classList.add("is-valid");
+
+        mostrarAlert("¡Ingreso exitoso!", "success");
+
+        // Aquí puedes redirigir a otra página
+        // setTimeout(() => window.location.href = "index.html", 1500);
+
+    } else {
+        // Login incorrecto
+        loginCorreo.classList.add("is-invalid");
+        loginPass.classList.add("is-invalid");
+        loginCorreo.classList.remove("is-valid");
+        loginPass.classList.remove("is-valid");
+
+        mostrarAlert("Correo o contraseña incorrectos", "error");
+    }
 });
