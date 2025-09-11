@@ -85,54 +85,47 @@
             <div class="row justify-content-center">
                 <div class="p-4 card bg-dark text-white">
                     <h2 class="mb-4">Contacto</h2>
-                    <form action="" method="post" class="row g-3" >
+                    <!-- Alerta en caso de no cumplir con validaciones -->
+                    <div id="regAlert" class="alert d-none" role="alert"></div>
+                    <form id='formContacto'class="row g-3" novalidate >
                     <div class="col-12 col-md-6">
                         <label for="nombre" class="form-label">Nombre completo</label>
                         <input type="text" class="form-control" id="ctonombre" name="nombre" 
-                        placeholder="Elsa Payo">
+                        placeholder="Elsa Payo" required>
+                        <div class="invalid-feedback">Sólo letras y espacios, máximo 40 caracteres.</div>
                     </div>
                     <!-- Correo -->
                     <div class="col-12 col-md-6">
                         <label for="correo" class="form-label">Correo</label>
                         <input type="email" class="form-control" id="ctocorreo" name="correo" 
-                        placeholder="hola@example.com">
+                        placeholder="hola@example.com" required>
+                        <div class="invalid-feedback">Debe ser un correo válido @duoc.cl o duoc estudiante</div>
                     </div>
 
                     <!-- Teléfono -->
                     <div class="col-12 col-md-6">
                         <label for="telefono" class="form-label">Teléfono</label>
                         <input type="tel" class="form-control" id="ctotelefono" name="telefono"
-                            placeholder="+56 9 1234 5678" pattern="^[0-9+\s()-]{8,}$" >
+                            placeholder="+56 9 1234 5678" pattern="^[0-9+\s()-]{8,}$" required>
+                            <div class="invalid-feedback">Ingresa un teléfono válido (7-15 dígitos/símbolos).</div>
                     </div>
                     <!-- Comuna -->
                     <div class="col-12 col-md-6">
                         <label for="comuna" class="form-label">Comuna</label>
-                        <select class="form-select" id="ctocomuna" name="comuna" >
-                        <option value="" selected disabled>Seleccione una comuna</option>
-                        <option>Puente Alto</option>
-                        <option>La Florida</option>
-                        <option>Santiago</option>
-                        <option>Providencia</option>
-                        <option>Maipú</option>
-                        <option>Ñuñoa</option>
-                        <option>La Reina</option>
-                        <option>Las Condes</option>
-                        <option>Peñalolen</option>
-                        <option>San Bernardo</option>
-                        <option>Santiago</option>
-                        <option>La Pintana</option>
-                        <option>El Bosque</option>
-                        <option>La Granja</option>
+                        <select class="form-select" id="comuna" name="comuna" required>
+                        <option value="">Seleccione una comuna</option>
                         </select>
+                        <div class="invalid-feedback">Selecciona una comuna.</div>
                     </div>
                     <div class="col-12">
                         <label for="asunto" class="form-label">Asunto</label>
                         <textarea class="form-control" id="ctoasunto" name="asunto" rows="5"
-                        placeholder="Escribe tu mensaje aquí..." ></textarea>
+                        placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        <div class="invalid-feedback">Debes incluir un mensaje de máximo 300 carateres.</div>
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-primary btn-lg" type="button" onclick="window.location.href='index.html'"> Enviar</button>
+                        <button class="btn btn-primary btn-lg" type="submit"> Enviar</button>
                     </div>
                     </form>
                 </div>

@@ -4,6 +4,7 @@ const ctocorreo = document.getElementById('ctocorreo');
 const ctotelefono = document.getElementById('ctotelefono');
 const ctocomuna = document.getElementById('ctocomuna');
 const ctoasunto = document.getElementById('ctoasunto');
+const form = document.getElementById('formContacto');
 
 
 
@@ -18,7 +19,7 @@ const validPhone = (str) => str === '' || /^[0-9+()-]{8,15}$/.test(str);
 //Validaciones formulario contacto
 
 ctonombre.addEventListener('input', ()=>{
-    if(soloLetrasEspacios(ctonombre.value.trim()) && ctonombre.value.length<=25){
+    if(soloLetrasEspacios(ctonombre.value.trim()) && ctonombre.value.length<=40){
         ctonombre.classList.remove('is-invalid');
         ctonombre.classList.add('is-valid');
     } else {
@@ -54,3 +55,71 @@ ctotelefono.addEventListener('input',()=>{
     }
 }
 );
+
+ctoasunto.addEventListener('input', ()=>{
+    if(soloLetrasEspacios(ctoasunto.value.trim()) && ctoasunto.value.length<=300){
+        ctoasunto.classList.remove('is-invalid');
+        ctoasunto.classList.add('is-valid');
+    } else {
+        ctoasunto.classList.add('is-invalid');
+        ctoasunto.classList.remove('is-valid');
+    }
+}
+
+);
+//Seccion comunas
+const comunas = {
+    "PA" : "Puente Alto",
+    "LF" : "La Florida",
+    "LR" : "La Reina",
+    "LP" : "La Pintana",
+    "LC" : "Las Condes",
+    "PL" : "Penalolen",
+    "LG" : "La Granja",
+    "EB" : "El Bosque",
+    "MP" : "Maipu",
+    "ST" : "Santiago"
+}
+
+function llenarComunas(){
+    for (let codigo in comunas){
+        const opcion = document.createElement("option");
+        opcion.value = codigo.valueOf();
+        opcion.textContent = comunas[codigo];
+        comuna.appendChild(opcion);
+
+    }
+    
+};
+llenarComunas();
+//validar comunas seleccionadas
+comuna.addEventListener('change',() =>{
+    comuna.classList.toggle('is-valid',comuna.value != '');
+    comuna.classList.toggle('is-invalid',comuna.value == '');
+});
+
+//Sección submit
+
+form.addEventListener('submit',(e) => {
+    //evita perder datos al recargar
+    e.preventDefault();
+
+    //valida y captura campos con 'is-invalid', de ser así,
+    //retorna true y visibiliza los div d-none con mensaje de error
+    const invalid = form.querySelector(".is-invalid");
+    if (invalid){ 
+        regAlert.className = "alert alert-danger";
+
+        regAlert.textContent = "Revise todos los campos";
+        regAlert.classList.remove("d-none");
+        //3 segundos y desapareece el mensaje, añadeclase d-none
+        setTimeout(()=>regAlert.classList.add("d-none"), 3000);
+        return;
+    }
+
+    //en caso de exito, mensaje verde
+    regAlert.className = "alert alert-success";
+    regAlert.textContent = "Formulario enviado exitosamente";
+    regAlert.classList.remove("d-none");
+    setTimeout(()=>regAlert.classList.add("d-none"), 3000);
+});
