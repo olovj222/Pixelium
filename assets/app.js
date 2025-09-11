@@ -109,8 +109,11 @@ form.addEventListener('submit',(e) => {
     const invalid = form.querySelector(".is-invalid");
     if (invalid){ 
         regAlert.className = "alert alert-danger";
-
-        regAlert.textContent = "Revise todos los campos";
+        regAlert.innerHTML = `
+            Revise todos los campos
+            <p></p>
+            <img src="assets/img/error.gif" alt="Error" class="me-2" style="width:80px;height:80px;">
+        `;
         regAlert.classList.remove("d-none");
         //3 segundos y desapareece el mensaje, añadeclase d-none
         setTimeout(()=>regAlert.classList.add("d-none"), 3000);
@@ -119,7 +122,16 @@ form.addEventListener('submit',(e) => {
 
     //en caso de exito, mensaje verde
     regAlert.className = "alert alert-success";
-    regAlert.textContent = "Formulario enviado exitosamente";
     regAlert.classList.remove("d-none");
+    regAlert.innerHTML = `
+        Formulario enviado exitosamente
+        <p></p>
+        <img src="assets/img/check.gif" alt="Éxito" class="me-2" style="width:90px;height:90px;">
+    `;
     setTimeout(()=>regAlert.classList.add("d-none"), 3000);
+    form.reset();
+
+    // limpiar bordes verdes/rojos de Bootstrap
+    const inputs = form.querySelectorAll(".is-valid, .is-invalid");
+    inputs.forEach(input => input.classList.remove("is-valid", "is-invalid"));
 });
