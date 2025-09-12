@@ -5,6 +5,7 @@ const correo = document.getElementById('correo');
 const correo2 = document.getElementById('correo2');
 const correo3 = document.getElementById('correo3');
 const telefono = document.getElementById('telefono');
+const fechaNacimiento = document.getElementById('fechaNacimiento');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const comuna = document.getElementById('comuna');
@@ -23,6 +24,43 @@ const validPhone = (str) => str === '' || /^[0-9+()-]{8,15}$/.test(str);
 const strongPassword = (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
 
 //VALIDACIONES
+// Función para validar edad mínima
+const validarEdad = (fecha) => {
+    const hoy = new Date();
+    const nacimiento = new Date(fecha);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    const mes = hoy.getMonth() - nacimiento.getMonth();
+
+    // Ajustar si aún no ha cumplido años este año
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+        edad--;
+    }
+
+    return edad >= 14;
+};
+
+// VALIDACION FECHA DE NACIMIENTO
+(function setFechaMaxima() {
+    const hoy = new Date();
+    const limiteEdad = new Date(
+        hoy.getFullYear() - 14, // restamos 14 años
+        hoy.getMonth(),
+        hoy.getDate()
+    );
+    const maxFecha = limiteEdad.toISOString().split("T")[0];
+    fechaNacimiento.setAttribute("max", maxFecha);
+})();
+
+fechaNacimiento.addEventListener('change', () => {
+    if (fechaNacimiento.value && validarEdad(fechaNacimiento.value)) {
+        fechaNacimiento.classList.remove('is-invalid');
+        fechaNacimiento.classList.add('is-valid');
+    } else {
+        fechaNacimiento.classList.add('is-invalid');
+        fechaNacimiento.classList.remove('is-valid');
+    }
+});
+
 //VALIDAMOS EL NOMBRE
 nombre.addEventListener('input',()=>{
     if (soloLetrasEspacios(nombre.value.trim()) && nombre.value.length>=2 && nombre.value.length<=30){
@@ -188,6 +226,11 @@ form?.addEventListener('submit', (e) => {
             hayError = true;
         } 
         // Validaciones específicas
+        else if (campo === fechaNacimiento && !validarEdad(fechaNacimiento.value)) {
+            campo.classList.add('is-invalid');
+            campo.classList.remove('is-valid');
+            hayError = true;
+        }
         else if (campo === nombre && (!soloLetrasEspacios(nombre.value.trim()) || nombre.value.length < 2 || nombre.value.length > 30)) {
             campo.classList.add('is-invalid');
             campo.classList.remove('is-valid');
