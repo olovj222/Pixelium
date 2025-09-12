@@ -93,10 +93,41 @@ const comunas = {
     "PA" : "Puente Alto",
     "LF" : "La Florida",
     "LP" : "La Pintana",
-    "ST" : "Santiago"
+    "ST" : "Santiago",
+    "CC" : "Cerrillos",
+    "CM" : "Cerro Navia",
+    "SL" : "San Miguel",
+    "SM" : "San Ramón",
+    "PS" : "Pedro Aguirre Cerda",
+    "LC" : "Lo Curro",
+    "CT" : "Conchalí",
+    "IN" : "Independencia",
+    "RE" : "Recoleta",
+    "RI" : "Renca",
+    "PT" : "Pudahuel",
+    "QU" : "Quilicura",
+    "ML" : "Maipú",
+    "LO" : "Lo Prado",
+    "PU" : "Providencia",
+    "CH" : "Ñuñoa",
+    "AT" : "Macul",
+    "HB" : "Huechuraba",
+    "VT" : "Vitacura",
+    "LC" : "Las Condes",
+    "IS" : "Isla de Maipo",
+    "TA" : "Talagante",
+    "CA" : "Calera de Tango",
+    "BU" : "Buin",
+    "MA" : "Melipilla",
+    "AL" : "Alhué",
+    "LM" : "Lampa",
+    "CO" : "Colina",
+    "SV" : "San Bernardo",
+    "EL" : "El Bosque"
 }
-//creamos funcion para llenar select de comunas
+
 function llenarComunas(){
+
     for (let codigo in comunas){
         const opcion = document.createElement("option");
         opcion.value = codigo.valueOf();
@@ -106,17 +137,14 @@ function llenarComunas(){
     }
     
 };
-//llamamos a la funcion
-llenarComunas(); //dejamos el select sin valor por defecto
-//VALIDAMOS EL CAMPO SELECT, esta vez usando toggle
-//toggle verifica el valor de verdad de una condicion, si se cumple, añade la clase señalada
-//si no la cumple, la elimina.
+
+llenarComunas(); 
 comuna.addEventListener('change',() =>{
     comuna.classList.toggle('is-valid',comuna.value != '');
     comuna.classList.toggle('is-invalid',comuna.value == '');
 });
 
-//VALIDACION DE CONTRASEÑA
+
 password?.addEventListener('input',()=>{
     if (password.value.length >= 8 && strongPassword(password.value)){
         password.classList.remove('is-invalid');
@@ -128,7 +156,7 @@ password?.addEventListener('input',()=>{
     }
 }
 );
-//VALIDACION DE CONTRASEÑA2
+
 password2?.addEventListener('input',()=>{
     if (password.value == password2.value){
         password2.classList.remove('is-invalid');
@@ -140,9 +168,6 @@ password2?.addEventListener('input',()=>{
     }
 }
 );
-
-//==========================================================//
-
 
 //función en el boton SUBMIT
 form?.addEventListener('submit', (e) => {
@@ -193,7 +218,7 @@ form?.addEventListener('submit', (e) => {
             campo.classList.remove('is-valid');
             hayError = true;
         }
-        // Campo válido
+            // Campo válido
         else {
             campo.classList.remove('is-invalid');
             campo.classList.add('is-valid');

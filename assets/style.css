@@ -268,3 +268,27 @@ p {
 
 }
 
+/* Clase general para íconos sociales */
+.social-icon {
+    display: inline-block;       /* Para que se comporte como un bloque pequeño */
+    margin: 0 10px;              /* Separación entre iconos */
+    font-size: 32px;             /* Tamaño del icono */
+    color: #fff;                 /* Color inicial blanco */
+    transition: transform 0.2s, color 0.2s; /* Animación suave */
+}
+
+.social-icon:hover {
+    transform: scale(1.4);       /* Agrandar ligeramente al pasar el mouse */
+    color: #80f6fa; /* verde neón */
+    text-shadow: 0 0 5px #80f6fa,
+                 0 0 10px #80f6fa,
+                 0 0 20px #80f6fa,
+                 0 0 40px #80f6fa;
+    
+}
+
+
+.social-icon.whatsapp { color: #1E90FF; }
+.social-icon.instagram { color: #1E90FF; }
+.social-icon.twitch { color: #1E90FF; }
+.social-icon.mercadolibre { color: #1E90FF; }
